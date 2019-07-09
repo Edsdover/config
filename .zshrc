@@ -7,8 +7,35 @@ export ZSH="/Users/edover/.oh-my-zsh"
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    sudo
+    history
+    taskwarrior
+    zsh-nvm
+)
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs root_indicator)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs ram_joined custom_wifi_signal node_version)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_BATTERY_VERBOSE=flase
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=0
+
 POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_STATUS_CROSS=true
+
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blueviolet"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="black"
@@ -30,25 +57,6 @@ zsh_wifi_signal(){
                 echo -n "%{$color%}$speed Mbps" # removed char not in my PowerLine font
         fi
 }
-
-# ram
-POWERLEVEL9K_RAM_ICON=''
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
-ZSH_THEME="powerlevel9k/powerlevel9k"
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs root_indicator)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs ram_joined custom_wifi_signal node_version)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_BATTERY_VERBOSE=flase
-P9K_STATUS_CROSS=true
-
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 
 # Add a space in the first prompt
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
@@ -107,19 +115,6 @@ HIST_STAMPS="mm/dd/yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-    sudo
-    history
-    taskwarrior
-    zsh-nvm
-)
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -141,10 +136,6 @@ plugins=(
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias c="clear"
 alias b="cd .."
