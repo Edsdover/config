@@ -1,9 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/edover/.oh-my-zsh"
-
+set completion-ignore-case On
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
@@ -14,7 +14,6 @@ export NVM_DIR=~/.nvm
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    sudo
     history
     taskwarrior
     zsh-nvm
@@ -31,7 +30,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs ram_joined custom_wif
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_BATTERY_VERBOSE=flase
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=10
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
 
 POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_STATUS_CROSS=true
@@ -132,6 +131,24 @@ HIST_STAMPS="mm/dd/yyyy"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -143,10 +160,15 @@ alias drop="git stash && git stash drop"
 alias nv="node --version"
 alias n4="nvm use 4.2.2"
 alias n6="nvm use 6.14.4"
+alias n10="nvm use 10"
 alias n11="nvm use 11.10.0"
 alias npm install="npm install --loglevel warn"
 alias nuke="rm -rf node_modules && rm -rf package-lock.json"
 alias l="ls -la"
 alias src="source ~/.zshrc"
+alias his="history 1"
 
 alias weather="curl -4 http://wttr.in/Nashville+TN+37210"
+
+weather
+[ -s "/Users/edover/.jabba/jabba.sh" ] && source "/Users/edover/.jabba/jabba.sh"
